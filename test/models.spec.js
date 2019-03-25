@@ -17,7 +17,7 @@ describe('database is synced and seeded', ()=> {
     });
     it('Andy belongs to the Giants', ()=> {
         return Player.findOne({
-            where: { name: 'Andy' },
+            where: { info_player: 'Andy' },
             include: [Team]
         }) 
             .then(andy => expect(andy.team.name).to.equal('Giants'));

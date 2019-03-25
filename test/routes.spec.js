@@ -18,7 +18,7 @@ it("GET /players", ()=> {
 it("POST /player", ()=> {
     return app.post('/player/Dave')
         .expect(200)
-        .then(player => expect(player.body.name).to.equal('Dave'))
+        .then(player => expect(player.body.info_player).to.equal('Dave'))
 })
 it("GET /teams", ()=> {
     return app.get('/teams')
