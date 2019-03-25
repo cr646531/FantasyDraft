@@ -1,0 +1,11 @@
+{
+  "name": "fantasydraft",
+  "version": "0.0.1",
+  "description": "Fantasy Football Draft Simulator",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Charlie Robinson",
+  "license": "ISC"
+}
