@@ -4,7 +4,8 @@
   "description": "Fantasy Football Draft Simulator",
   "main": "app.js",
   "scripts": {
-    "test": "DATABASE_URL=postgres://localhost/fantasydraft_tester_db nodemon ./node_modules/mocha/bin/mocha"
+    "test": "DATABASE_URL=postgres://localhost/fantasydraft_tester_db nodemon ./node_modules/mocha/bin/mocha",
+    "start": "node app.js"
   },
   "author": "Charlie Robinson",
   "license": "ISC",
