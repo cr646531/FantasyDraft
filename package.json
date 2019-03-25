@@ -4,8 +4,16 @@
   "description": "Fantasy Football Draft Simulator",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "DATABASE_URL=postgres://localhost/fantasydraft_tester_db nodemon ./node_modules/mocha/bin/mocha"
   },
   "author": "Charlie Robinson",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "express": "^4.16.4",
+    "mocha": "^6.0.2",
+    "nodemon": "^1.18.10",
+    "pg": "^7.9.0",
+    "sequelize": "^5.1.1"
+  }
 }
