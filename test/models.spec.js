@@ -14,5 +14,12 @@ describe('database is synced and seeded', ()=> {
     it('there are 3 teams', ()=> {
         return Team.findAll({})
             .then(teams => expect(teams.length).to.equal(3));
+    });
+    it('Andy belongs to the Giants', ()=> {
+        return Player.findOne({
+            where: { name: 'Andy' },
+            include: [Team]
+        }) 
+            .then(andy => expect(andy.team.name).to.equal('Giants'));
     })
 })
