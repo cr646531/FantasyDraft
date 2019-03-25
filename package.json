@@ -5,16 +5,18 @@
   "main": "app.js",
   "scripts": {
     "test": "DATABASE_URL=postgres://localhost/fantasydraft_tester_db nodemon ./node_modules/mocha/bin/mocha",
-    "start": "node app.js"
+    "start": "DATABASE_URL=postgres://localhost/fantasydraft_tester_db nodemon server.js"
   },
   "author": "Charlie Robinson",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "chai": "^4.2.0",
     "express": "^4.16.4",
     "mocha": "^6.0.2",
     "nodemon": "^1.18.10",
     "pg": "^7.9.0",
-    "sequelize": "^5.1.1"
+    "sequelize": "^5.1.1",
+    "supertest": "^4.0.2"
   }
 }
