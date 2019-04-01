@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadPlayers } from './store';
 import { Route, HashRouter as Router } from 'react-router-dom';
+
+import Nav from './Nav';
 import Players from './Players';
 
 class App extends Component{
@@ -17,7 +19,7 @@ class App extends Component{
       <div>
         <Router>
           <div>
-            {/* <Route component={ ({ location })=> <Nav path={ location.pathname }/> } /> */}
+            <Route component={ ({ location })=> <Nav path={ location.pathname }/> } />
             <Route exact path='/players' component={ Players } /> 
             {/* <Route path='/users/:id' component={ UserUpdate } />  */}
           </div>

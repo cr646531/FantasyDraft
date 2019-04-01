@@ -62,8 +62,12 @@ app.get('/data', (req, res) => {
       playerData.map(player => 
         Player.create(player)
       );
-  
-      res.send(playerData);
+
+      Player.findAll()
+        .then(players => {
+          res.send(players)
+        })
+
     });
   });
 

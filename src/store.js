@@ -26,7 +26,7 @@ const _loadPlayers = (players)=> ({
 
 const loadPlayers = ()=> {
     return (dispatch)=> {
-        return axios.get('/players')
+        return axios.get('/data')
             .then(response => response.data)
             .then(players => dispatch(_loadPlayers(players)));
     }

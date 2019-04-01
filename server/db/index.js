@@ -41,30 +41,31 @@ Player.hasOne(Team);
 
 const sync = ()=> db.sync({ force: true });
 const seed = ()=> {
+    console.log('Database has been synced');
 
-    let andy, bill, chris, giants, jets, bills;
+    // let andy, bill, chris, giants, jets, bills;
 
-    return Promise.all([
-        Player.create({ info_player: "Andy" }),
-        Player.create({ info_player: 'Bill' }),
-        Player.create({ info_player: 'Chris' })     
-    ])
-        .then((players)=> {
-            [andy, bill, chris] = players;
-            return Promise.all([
-                Team.create({ name: 'Giants' }),
-                Team.create({ name: 'Jets' }),
-                Team.create({ name: 'Bills' })
-            ]); 
-        })
-        .then((teams) => {
-            [giants, jets, bills] = teams;
-            return Promise.all([
-                andy.setTeam(giants),
-                bill.setTeam(jets),
-                chris.setTeam(bills)
-            ])
-        })
+    // return Promise.all([
+    //     Player.create({ info_player: "Andy" }),
+    //     Player.create({ info_player: 'Bill' }),
+    //     Player.create({ info_player: 'Chris' })     
+    // ])
+    //     .then((players)=> {
+    //         [andy, bill, chris] = players;
+    //         return Promise.all([
+    //             Team.create({ name: 'Giants' }),
+    //             Team.create({ name: 'Jets' }),
+    //             Team.create({ name: 'Bills' })
+    //         ]); 
+    //     })
+    //     .then((teams) => {
+    //         [giants, jets, bills] = teams;
+    //         return Promise.all([
+    //             andy.setTeam(giants),
+    //             bill.setTeam(jets),
+    //             chris.setTeam(bills)
+    //         ])
+    //     })
 };
 
 module.exports = {

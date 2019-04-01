@@ -32586,7 +32586,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store */ "./src/store.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _Players__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Players */ "./src/Players.js");
+/* harmony import */ var _Nav__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Nav */ "./src/Nav.js");
+/* harmony import */ var _Players__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Players */ "./src/Players.js");
+
+
 
 
 
@@ -32611,7 +32614,8 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
           'div',
           null,
-          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], { exact: true, path: '/players', component: _Players__WEBPACK_IMPORTED_MODULE_4__["default"] })
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], { component: ({ location }) => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_4__["default"], { path: location.pathname }) }),
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], { exact: true, path: '/players', component: _Players__WEBPACK_IMPORTED_MODULE_5__["default"] })
         )
       )
     );
@@ -32631,6 +32635,66 @@ const mapStateToProps = ({ players }) => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(App));
+
+/***/ }),
+
+/***/ "./src/Nav.js":
+/*!********************!*\
+  !*** ./src/Nav.js ***!
+  \********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+
+const Nav = ({ players, path }) => {
+  const selected = _path => {
+    const style = {};
+    if (_path === path) {
+      style.fontWeight = 'bold';
+    }
+    return style;
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+    'ul',
+    null,
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+      'li',
+      { style: selected('/') },
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+        react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"],
+        { to: '/' },
+        'Home'
+      )
+    ),
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+      'li',
+      { style: selected('/players') },
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+        react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"],
+        { to: '/players' },
+        'Players'
+      )
+    )
+  );
+};
+
+const mapStateToProps = ({ players }) => {
+  return {
+    players
+  };
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps)(Nav));
 
 /***/ }),
 
@@ -32764,7 +32828,7 @@ const _loadPlayers = players => ({
 
 const loadPlayers = () => {
     return dispatch => {
-        return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/players').then(response => response.data).then(players => dispatch(_loadPlayers(players)));
+        return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/data').then(response => response.data).then(players => dispatch(_loadPlayers(players)));
     };
 };
 
