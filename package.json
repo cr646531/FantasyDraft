@@ -2,14 +2,26 @@
   "name": "fantasydraft",
   "version": "0.0.1",
   "description": "Fantasy Football Draft Simulator",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "DATABASE_URL=postgres://localhost/fantasydraft_tester_db nodemon ./node_modules/mocha/bin/mocha",
-    "start": "DATABASE_URL=postgres://localhost/fantasydraft_tester_db nodemon server.js"
+    "postinstall": "npm run webpack",
+    "webpack": "webpack",
+    "build": "npm run webpack -- --watch --mode=development",
+    "start": "npm run build & DATABASE_URL=postgres://localhost/fantasydraft_tester_db nodemon ./server/index.js --ignore dist --ignore src"
   },
   "author": "Charlie Robinson",
   "license": "ISC",
+  "babel": {
+    "presets": [
+      "react"
+    ]
+  },
   "dependencies": {
+    "axios": "^0.18.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-react": "^6.24.1",
     "body-parser": "^1.18.3",
     "chai": "^4.2.0",
     "cheerio": "^1.0.0-rc.2",
@@ -17,8 +29,19 @@
     "mocha": "^6.0.2",
     "nodemon": "^1.18.10",
     "pg": "^7.9.0",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^5.0.0",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
     "request": "^2.88.0",
     "sequelize": "^5.1.1",
     "supertest": "^4.0.2"
+  },
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
   }
 }

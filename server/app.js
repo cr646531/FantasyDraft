@@ -5,12 +5,19 @@ const cheerio = require('cheerio');
 const db = require('./db');
 const { Player, Team } = db.models;
 const format = require('./format');
+const path = require('path');
 
 var pageToVisit = "https://www.pro-football-reference.com/years/2018/fantasy.htm";
 
-app.get('/', (req, res) => {
-    res.send('hello world!');
-});
+app.use(require('body-parser').json());
+
+
+app.use('/dist', express.static(path.join(__dirname, '../dist')));
+
+const index = path.join(__dirname, '../index.html');
+
+app.get('/', (req, res)=> res.sendFile(index));
+
 
 app.get('/players', (req, res, err)=> {
     Player.findAll({})
