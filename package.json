@@ -8,7 +8,8 @@
     "postinstall": "npm run webpack",
     "webpack": "webpack",
     "build": "npm run webpack -- --watch --mode=development",
-    "start": "npm run build & DATABASE_URL=postgres://localhost/fantasydraft_tester_db nodemon ./server/index.js --ignore dist --ignore src"
+    "start:dev": "npm run build & DATABASE_URL=postgres://localhost/fantasydraft_tester_db nodemon ./server/index.js --ignore dist --ignore src",
+    "start": "npm run build & DATABASE_URL=postgres://localhost/fantasydraft_tester_db ./server/index.js --ignore dist --ignore src"
   },
   "author": "Charlie Robinson",
   "license": "ISC",

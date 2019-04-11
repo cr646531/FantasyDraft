@@ -5,6 +5,7 @@ const root = document.getElementById('root');
 import store from './store';
 import { Provider } from 'react-redux';
 import App from './App';
+import Players from './Players'
 
 render(<Provider store= { store }>
   <App />

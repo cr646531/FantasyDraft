@@ -1,27 +1,74 @@
+// import React, { Component } from 'react';
+// import { connect } from 'react-redux';
+// import { getPlayers } from './store';
+// import { Route, HashRouter as Router } from 'react-router-dom';
+
+// import Nav from './Nav';
+// import Players from './Players';
+
+// class App extends Component{
+
+//   componentDidMount(){
+//     // this.props.getPlayers();
+//   }
+
+//   render(){
+//     const { players } = this.props;
+    
+//     return (
+//       <div>
+//         <Router>
+//           <div>
+//             <Route component={ ({ location })=> <Nav path={ location.pathname }/> } />
+//             <Route exact path='/players' component={ Players } /> 
+//             {/* <Route path='/users/:id' component={ UserUpdate } />  */}
+//           </div>
+//         </Router>
+//       </div>
+//     );
+//   }
+// }
+
+// const mapDispatchToProps = (dispatch)=> {
+//   return {
+//     getPlayers: ()=> dispatch(getPlayers())
+//   };
+// };
+
+// const mapStateToProps = ({ players })=> {
+//   return {
+//     players
+//   };
+// };
+
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadPlayers } from './store';
+import { getPlayers, loadPlayers } from './store';
 import { Route, HashRouter as Router } from 'react-router-dom';
 
 import Nav from './Nav';
 import Players from './Players';
+import Player from './Player';
 
 class App extends Component{
 
   componentDidMount(){
-    this.props.init();
+    this.props.getPlayers();
   }
 
   render(){
     const { players } = this.props;
-    console.log(players);
+    
     return (
       <div>
         <Router>
           <div>
             <Route component={ ({ location })=> <Nav path={ location.pathname }/> } />
             <Route exact path='/players' component={ Players } /> 
-            {/* <Route path='/users/:id' component={ UserUpdate } />  */}
+            <Route path='/players/:name' render={ ({ match })=> <Player name={match.params.name} /> }  />
           </div>
         </Router>
       </div>
@@ -31,14 +78,9 @@ class App extends Component{
 
 const mapDispatchToProps = (dispatch)=> {
   return {
-    init: ()=> dispatch(loadPlayers()),
+    getPlayers: ()=> dispatch(getPlayers()),
+    loadPlayers: ()=> dispatch(loadPlayers())
   };
 };
 
-const mapStateToProps = ({ players })=> {
-  return {
-    players
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

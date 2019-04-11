@@ -16,7 +16,9 @@ app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
 const index = path.join(__dirname, '../index.html');
 
-app.get('/', (req, res)=> res.sendFile(index));
+app.get('/', (req, res)=> {
+  res.sendFile(index);
+});
 
 
 app.get('/players', (req, res, err)=> {
@@ -62,13 +64,12 @@ app.get('/data', (req, res) => {
       playerData.map(player => 
         Player.create(player)
       );
-
-      Player.findAll()
-        .then(players => {
-          res.send(players)
-        })
-
     });
+
+    console.log('Players have been created');
+
+    res.send(202);
+
   });
 
 module.exports = app;
